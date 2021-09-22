@@ -1,0 +1,14 @@
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.deps.json
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.AssemblyInfoInputs.cache
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.AssemblyInfo.cs
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.csproj.CoreCompileInputs.cache
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.csprojAssemblyReference.cache
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature.EF.Core\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.csproj.CopyComplete

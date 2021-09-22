@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stock.Mining.Information.Setup", "Stock.Mining.Information.Setup\Stock.Mining.Information.Initialization.csproj", "{F498BB2D-4D8B-401E-9213-09065F5FC2D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{0974E1AA-FC4C-4C56-AE4F-46A3A495B395}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.Mining.Information.Ef.Core", "..\Shared\Stock.Mining.Information.Ef.Core\Stock.Mining.Information.Ef.Core.csproj", "{FBA0E0CE-4E7A-486D-8966-6C1F05612058}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stock.Symbol.Feature.Shared.Model", "..\Shared\Stock.Symbol.Feature.Shared.Model\Stock.Symbol.Feature.Shared.Model.csproj", "{D305330B-81BF-4140-A411-517976BC41EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stock.Mining.Information.Proxy", "..\Shared\Stock.Mining.Information.Proxy\Stock.Mining.Information.Proxy.csproj", "{8FEE3B9E-5CE0-4349-8FA1-779E942E8A43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F498BB2D-4D8B-401E-9213-09065F5FC2D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F498BB2D-4D8B-401E-9213-09065F5FC2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F498BB2D-4D8B-401E-9213-09065F5FC2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F498BB2D-4D8B-401E-9213-09065F5FC2D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA0E0CE-4E7A-486D-8966-6C1F05612058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA0E0CE-4E7A-486D-8966-6C1F05612058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA0E0CE-4E7A-486D-8966-6C1F05612058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBA0E0CE-4E7A-486D-8966-6C1F05612058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D305330B-81BF-4140-A411-517976BC41EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D305330B-81BF-4140-A411-517976BC41EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D305330B-81BF-4140-A411-517976BC41EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D305330B-81BF-4140-A411-517976BC41EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FEE3B9E-5CE0-4349-8FA1-779E942E8A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEE3B9E-5CE0-4349-8FA1-779E942E8A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEE3B9E-5CE0-4349-8FA1-779E942E8A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEE3B9E-5CE0-4349-8FA1-779E942E8A43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FBA0E0CE-4E7A-486D-8966-6C1F05612058} = {0974E1AA-FC4C-4C56-AE4F-46A3A495B395}
+		{D305330B-81BF-4140-A411-517976BC41EB} = {0974E1AA-FC4C-4C56-AE4F-46A3A495B395}
+		{8FEE3B9E-5CE0-4349-8FA1-779E942E8A43} = {0974E1AA-FC4C-4C56-AE4F-46A3A495B395}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {974D3677-A009-45AD-BE5F-0F1E5A812507}
+	EndGlobalSection
+EndGlobal

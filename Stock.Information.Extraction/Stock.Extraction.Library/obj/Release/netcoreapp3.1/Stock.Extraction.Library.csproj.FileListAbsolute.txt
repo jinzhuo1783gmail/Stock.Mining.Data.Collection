@@ -1,0 +1,8 @@
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\bin\Release\netcoreapp3.1\Stock.Extraction.Library.deps.json
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\bin\Release\netcoreapp3.1\Stock.Extraction.Library.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\bin\Release\netcoreapp3.1\Stock.Extraction.Library.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\obj\Release\netcoreapp3.1\Stock.Extraction.Library.AssemblyInfoInputs.cache
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\obj\Release\netcoreapp3.1\Stock.Extraction.Library.AssemblyInfo.cs
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\obj\Release\netcoreapp3.1\Stock.Extraction.Library.csproj.CoreCompileInputs.cache
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\obj\Release\netcoreapp3.1\Stock.Extraction.Library.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Information.Extraction\Stock.Extraction.Library\obj\Release\netcoreapp3.1\Stock.Extraction.Library.pdb
