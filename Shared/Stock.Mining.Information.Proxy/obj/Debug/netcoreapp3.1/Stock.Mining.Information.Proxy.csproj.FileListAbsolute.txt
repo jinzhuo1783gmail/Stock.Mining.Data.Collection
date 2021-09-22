@@ -1,0 +1,14 @@
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.deps.json
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.dll
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.pdb
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.csprojAssemblyReference.cache
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.AssemblyInfoInputs.cache
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.AssemblyInfo.cs
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.csproj.CoreCompileInputs.cache
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.dll
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.pdb
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.dll
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.pdb
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Proxy.csproj.CopyComplete
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.dll
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Proxy\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.pdb

@@ -1,0 +1,224 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Proxy\\Stock.Mining.Information.Proxy.csproj": {}
+  },
+  "projects": {
+    "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\Stock.Mining.Information.Ef.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\Stock.Mining.Information.Ef.Core.csproj",
+        "projectName": "Stock.Mining.Information.Ef.Core",
+        "projectPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\Stock.Mining.Information.Ef.Core.csproj",
+        "packagesPath": "C:\\Users\\jinzh\\.nuget\\packages\\",
+        "outputPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jinzh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.17, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Proxy\\Stock.Mining.Information.Proxy.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Proxy\\Stock.Mining.Information.Proxy.csproj",
+        "projectName": "Stock.Mining.Information.Proxy",
+        "projectPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Proxy\\Stock.Mining.Information.Proxy.csproj",
+        "packagesPath": "C:\\Users\\jinzh\\.nuget\\packages\\",
+        "outputPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Proxy\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jinzh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\Stock.Mining.Information.Ef.Core.csproj": {
+                "projectPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\Stock.Mining.Information.Ef.Core.csproj"
+              },
+              "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Symbol.Feature.Shared.Model\\Stock.Symbol.Feature.Shared.Model.csproj": {
+                "projectPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Symbol.Feature.Shared.Model\\Stock.Symbol.Feature.Shared.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.1.17, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            },
+            "RestSharp.Serializers.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Symbol.Feature.Shared.Model\\Stock.Symbol.Feature.Shared.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Symbol.Feature.Shared.Model\\Stock.Symbol.Feature.Shared.Model.csproj",
+        "projectName": "Stock.Symbol.Feature.Shared.Model",
+        "projectPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Symbol.Feature.Shared.Model\\Stock.Symbol.Feature.Shared.Model.csproj",
+        "packagesPath": "C:\\Users\\jinzh\\.nuget\\packages\\",
+        "outputPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Symbol.Feature.Shared.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\jinzh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\Stock.Mining.Information.Ef.Core.csproj": {
+                "projectPath": "C:\\Zhuo\\Code\\StockInforExtraction\\Shared\\Stock.Mining.Information.Ef.Core\\Stock.Mining.Information.Ef.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.1.17, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            },
+            "RestSharp.Serializers.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[106.12.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
