@@ -35,6 +35,11 @@ namespace Stock.Mining.Information.Proxy
             return _restSharpUtil.GetList<InstitutionTransaction>(_host + _configuration.GetSection("ApiLoad:Fintel:InstitutionsHoldingsHistory").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("symbol", ticker) });
         }
 
+        public async Task<IList<InsiderTransaction>> GetInsiderTransactionHistoriesAsync(string ticker)
+        {
+            return _restSharpUtil.GetList<InsiderTransaction>(_host + _configuration.GetSection("ApiLoad:Rapid:InsiderTransaction").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("symbol", ticker) });
+        }
+
 
         public async Task<IList<StockPriceViewModel>> GetMarketPriceAsync(string ticker, DateTime startDate, DateTime endDate)
         {

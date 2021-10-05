@@ -19,11 +19,20 @@ namespace Stock.Mining.Information.Initialization.Manager
         private ILogger<InitializeManager> _logger;
         private InstitutionManager _institutionManager;
         private MarketPriceManager _marketPriceManager;
-        public InitializeManager(ILogger<InitializeManager> logger, InstitutionManager institutionManager, MarketPriceManager marketPriceManager)
+        private InsiderTransactionManager _insiderTransactionManager;
+        public InitializeManager(ILogger<InitializeManager> logger, InstitutionManager institutionManager, MarketPriceManager marketPriceManager, InsiderTransactionManager insiderTransactionManager)
         { 
              _logger = logger;
             _institutionManager = institutionManager;
             _marketPriceManager = marketPriceManager;
+            _insiderTransactionManager = insiderTransactionManager;
+        }
+
+        public async Task<bool> AnyInsitutionHoldings(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
+        { 
+            var holdings = await _institutionManager.GetInstitutionHoldingsAsync(symbol.Ticker);
+
+            return holdings != null && holdings.Any();
         }
 
         public async Task<bool> InitializeInsitutionHoldings(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
@@ -58,6 +67,13 @@ namespace Stock.Mining.Information.Initialization.Manager
 
         }
 
+        public async Task<bool> AnyMarketPrices(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
+        { 
+            var prices = await _marketPriceManager.GetPersistMarketPriceAsync(symbol.Ticker);
+
+            return prices != null && prices.Any();
+        }
+
         public async Task<bool> InitializeMarketPrices(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
         {
             var priceList = await _marketPriceManager.GetMarketPriceAsync(symbol.Ticker);
@@ -68,7 +84,31 @@ namespace Stock.Mining.Information.Initialization.Manager
 
             if (!result)
             {
-                _logger.LogError($"{symbol.Ticker} market price upload fail total {JsonConvert.SerializeObject(priceList)}");
+                _logger.LogError($"{symbol.Ticker} market price upload fail total {JsonConvert.SerializeObject(priceEntity)}");
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task<bool> AnyInsiderHistories(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
+        { 
+            var histories = await _insiderTransactionManager.GetInsiderHistories(symbol.Ticker);
+
+            return histories != null && histories.Any();
+        }
+
+        public async Task<bool> InitializeInsiderTransaction(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
+        {
+            var transactionList = await _insiderTransactionManager.GetInsiderTransactionHistoriesAsync(symbol.Ticker);
+            var transactionEntity = transactionList.Select(i => i.ToInsiderHistoryEntity(symbol.Id)).ToList();
+
+            var result = await _insiderTransactionManager.UpsertInsiderTransactionHistoriesAsync(transactionEntity);
+            
+
+            if (!result)
+            {
+                _logger.LogError($"{symbol.Ticker} insider histories upload fail total {JsonConvert.SerializeObject(transactionEntity)}");
                 return false;
             }
 

@@ -63,5 +63,20 @@ namespace Stock.Mining.Information.Proxy
         {
             return _restSharpUtil.PostReturnNoResult<SymbolPrice, bool>(_host + _configuration.GetSection("ApiCollection:MarketPrice:UpertMarketPrice").Value, prices);
         }
+
+        public async Task<IList<SymbolPrice>> GetMarketPrice(string ticker)
+        {
+            return _restSharpUtil.GetList<SymbolPrice>(_host + _configuration.GetSection("ApiCollection:MarketPrice:GetMarketPrice").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("TickerName", ticker) });
+        }
+
+        public async Task<bool> UpsertTransactionHistory(IList<InsiderHistory> insiderHistories)
+        {
+            return _restSharpUtil.PostReturnNoResult<InsiderHistory, bool>(_host + _configuration.GetSection("ApiCollection:InsiderHistory:UpertInsiderHistories").Value, insiderHistories);
+        }
+
+        public async Task<IList<InsiderHistory>> GetInsiderHistory(string ticker)
+        {
+            return _restSharpUtil.GetList<InsiderHistory>(_host + _configuration.GetSection("ApiCollection:InsiderHistory:GetInsiderHistories").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("TickerName", ticker) });
+        }
     }
 }

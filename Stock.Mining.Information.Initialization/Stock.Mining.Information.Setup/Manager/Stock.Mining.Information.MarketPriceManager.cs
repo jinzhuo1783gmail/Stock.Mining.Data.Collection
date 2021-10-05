@@ -46,5 +46,11 @@ namespace Stock.Mining.Information.Initialization.Manager
             return await _collectionProxy.UpsertMarketPrice(prices);
         }
 
+       
+        public async Task<IList<SymbolPrice>> GetPersistMarketPriceAsync(string ticker)
+        { 
+            return await _collectionProxy.GetMarketPrice(ticker);
+        }
+
     }
 }

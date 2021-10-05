@@ -93,9 +93,9 @@ namespace Stock.Symbol.Feature.EF.Core
 
             var keys = await _context.RestSharpAccessKeys.ToListAsync();
 
-            if (keys.Any(key => key.MonthlyCount > 0 && key.NextRefreshMonth == DateTime.Now.Month && resetDay == DateTime.Now.Day))
+            if (keys.Any(key => key.MonthlyCount > 0 && key.NextRefreshMonth <= (DateTime.Now.Year * 100 + DateTime.Now.Month) && resetDay == DateTime.Now.Day))
             { 
-                keys.ForEach(k => { k.MonthlyCount = 0; k.NextRefreshMonth = DateTime.Now.AddMonths(1).Month; });
+                keys.ForEach(k => { k.MonthlyCount = 0; k.NextRefreshMonth = DateTime.Now.AddMonths(1).Year * 100 + DateTime.Now.AddMonths(1).Month; });
                 _context.RestSharpAccessKeys.UpdateRange(keys);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation($"All keys have been reset for month {DateTime.Now.Month} on Day {resetDay}");

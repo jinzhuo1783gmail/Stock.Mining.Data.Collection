@@ -64,6 +64,12 @@ namespace Stock.Symbol.Feature.Load.Manager
              
                 var allPrices = await _alphaVantageApiRetrievor.RetrieveAsync<JObject, JObject>(null);
 
+                if (allPrices == null) 
+                {
+                    _logger.LogError($"fail to get market price for symbol {ticker}. please check VPN");
+                    return null;
+                }
+
                 var priceListDict = JsonConvert.DeserializeObject<Dictionary<DateTime, StockPrice>>(allPrices["Time Series (Daily)"].ToString());
 
                 var priceList = priceListDict.Select(p =>

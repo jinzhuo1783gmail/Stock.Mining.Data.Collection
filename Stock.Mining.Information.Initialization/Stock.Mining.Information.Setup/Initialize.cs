@@ -46,14 +46,22 @@ namespace Stock.Mining.Information.Setup
                 else
                     _logger.LogInformation($"InsitutionHoldings Initialization For Symbol [{symbol.Ticker.ToUpper()}] Succeed");
 
-                result =  await _initializeManager.InitializeMarketPrices(symbol);
+                result = await _initializeManager.InitializeMarketPrices(symbol);
 
                 if (!result)
                     _logger.LogError($"Fail To Intitalize MarketPrice for Symbol [{symbol.Ticker.ToUpper()}]");
                 else
                     _logger.LogInformation($"MarketPrice Initialization For Symbol [{symbol.Ticker.ToUpper()}] Succeed");
 
-                _initializeManager.CompleteInitialization(symbol);
+
+                result =  await _initializeManager.InitializeInsiderTransaction(symbol);
+
+                if (!result)
+                    _logger.LogError($"Fail To Intitalize InsiderTransaction for Symbol [{symbol.Ticker.ToUpper()}]");
+                else
+                    _logger.LogInformation($"InsiderTransaction Initialization For Symbol [{symbol.Ticker.ToUpper()}] Succeed");
+
+                await _initializeManager.CompleteInitialization(symbol);
             }
 
 

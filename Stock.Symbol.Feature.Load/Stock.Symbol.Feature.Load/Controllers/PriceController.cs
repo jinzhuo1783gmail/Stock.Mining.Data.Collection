@@ -32,7 +32,7 @@ namespace Stock.Symbol.Feature.Load.Controllers
         {
 
             startDate = startDate == default(DateTime) ? DateTime.MinValue :  startDate.Date;
-            endDate = endDate == default(DateTime) ? DateTime.MaxValue :  endDate.Date.AddDays(1).AddSeconds(-1);
+            endDate = endDate.Date == DateTime.MaxValue.Date ? DateTime.MaxValue :  endDate.Date.AddDays(1).AddSeconds(-1);
 
             if (startDate > endDate)
             {

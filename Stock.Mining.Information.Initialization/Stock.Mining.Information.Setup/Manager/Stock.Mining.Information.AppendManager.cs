@@ -19,11 +19,14 @@ namespace Stock.Mining.Information.Initialization.Manager
         private ILogger<AppendManager> _logger;
         private InstitutionManager _institutionManager;
         private MarketPriceManager _marketPriceManager;
-        public AppendManager(ILogger<AppendManager> logger, InstitutionManager institutionManager, MarketPriceManager marketPriceManager)
+        private InsiderTransactionManager _insiderTransactionManager;
+
+        public AppendManager(ILogger<AppendManager> logger, InstitutionManager institutionManager, MarketPriceManager marketPriceManager, InsiderTransactionManager insiderTransactionManager)
         { 
              _logger = logger;
             _institutionManager = institutionManager;
             _marketPriceManager = marketPriceManager;
+            _insiderTransactionManager = insiderTransactionManager;
         }
 
         public async Task<bool> AppendInsitutionHoldingHistories(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol, DateTime? startDate = null, DateTime? endDate = null)
@@ -47,7 +50,7 @@ namespace Stock.Mining.Information.Initialization.Manager
                 var result = await _institutionManager.AppendInstitutionHoldingHsitories(filteredHistories, holdings, symbol);
 
                 if (result)
-                    _logger.LogInformation($"Append hsitory successful for symbol [{symbol.Ticker}]");
+                    _logger.LogInformation($"Append history successful for symbol [{symbol.Ticker}]");
                 else
                     _logger.LogError($"Append hsitory failed for symbol [{symbol.Ticker}]");
 
@@ -73,6 +76,33 @@ namespace Stock.Mining.Information.Initialization.Manager
             if (!result)
             {
                 _logger.LogError($"{symbol.Ticker} market price append fail total {JsonConvert.SerializeObject(priceList)}");
+                return false;
+            }
+
+            return true;
+        
+        }
+
+        public async Task<bool> AppendInsiderTransaction(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol,  DateTime? startDate = null, DateTime? endDate = null)
+        {
+            startDate = startDate ?? DateTime.MinValue;
+            endDate = endDate == null ? DateTime.MaxValue : endDate.Value.Date.AddDays(1).AddSeconds(-1);
+            
+
+            // get it from html webpage
+
+            var transList = await _insiderTransactionManager.GetInsiderTransactionHistoriesAsync(symbol.Ticker);
+
+            transList = transList.Where(tr => tr.TransactionDate >= startDate && tr.TransactionDate <= endDate).ToList();
+
+            
+            var transListEntity = transList.Select(t => t.ToInsiderHistoryEntity(symbol.Id)).ToList();
+
+            var result = await _insiderTransactionManager.UpsertInsiderTransactionHistoriesAsync(transListEntity);
+
+            if (!result)
+            {
+                _logger.LogError($"{symbol.Ticker} insider transaction append fail total {JsonConvert.SerializeObject(transListEntity)}");
                 return false;
             }
 

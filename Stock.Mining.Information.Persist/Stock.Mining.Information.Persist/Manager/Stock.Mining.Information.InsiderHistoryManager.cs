@@ -74,7 +74,7 @@ namespace Stock.Mining.Information.Persist.Manager
                 if (updateHsitoryList != null && updateHsitoryList.Any())
                 {
                     updateHistories = updateHsitoryList.ToDictionary(h => h.TransactionDate, p => p.Id);
-                    foreach (  var trans in updateHsitoryList)
+                    foreach (  var trans in histories)
                     {
                         if (updateHistories.Keys.Contains(trans.TransactionDate))
                         {
@@ -83,7 +83,6 @@ namespace Stock.Mining.Information.Persist.Manager
 
                     }
                 }
-                
 
                 var success = await _insiderHistoryRepository.AddRangedInsiderHistoryAsync(histories.Where(i => i.Id == 0).ToList());
                 success &= await _insiderHistoryRepository.UpdateRangedInsiderHistoryAsync(histories.Where(i => i.Id != 0).ToList());

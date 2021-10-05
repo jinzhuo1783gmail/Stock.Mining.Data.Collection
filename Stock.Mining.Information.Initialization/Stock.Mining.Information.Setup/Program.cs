@@ -22,7 +22,7 @@ namespace Stock.Mining.Information.Setup
         {
 
 
-            var isAppend = true;
+            var isAppend = false;
             var isProd = false;
 
             if (args.Contains("--prod")) isProd = true;
@@ -61,7 +61,9 @@ namespace Stock.Mining.Information.Setup
 
                     services.AddTransient<InstitutionManager>();
                     services.AddTransient<MarketPriceManager>();
+                    services.AddTransient<InsiderTransactionManager>();
                     
+
                     services.AddTransient<InitializeManager>();
                     services.AddTransient<AppendManager>();
                     services.AddSingleton<IRestClient, RestClient>();

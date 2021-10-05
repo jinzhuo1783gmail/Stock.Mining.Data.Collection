@@ -17,9 +17,9 @@ namespace Stock.Mining.Information.Persist.Controllers
         
         private readonly InsiderHistoryManager _insiderHistoryManager;
 
-        public InsiderTransactionController(InsiderHistoryManager _insiderHistoryManager)
+        public InsiderTransactionController(InsiderHistoryManager insiderHistoryManager)
         {
-            _insiderHistoryManager = _insiderHistoryManager;
+            _insiderHistoryManager = insiderHistoryManager;
         }
 
         [HttpGet]
