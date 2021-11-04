@@ -18,38 +18,49 @@ namespace Stock.Mining.Information.Setup
     {
 
         private InitializeManager _initializeManager;
-        private InstitutionManager _institutionManager;
+        private SymbolManager _symbolManager;
         private ILogger<Initialize> _logger;
         public Initialize(IServiceProvider services)
         {
             IServiceScope serviceScope = services.CreateScope();
             IServiceProvider provider = serviceScope.ServiceProvider;
-
+            
             _initializeManager = provider.GetRequiredService<InitializeManager>();
-            _institutionManager = provider.GetRequiredService<InstitutionManager>();
+            _symbolManager = provider.GetRequiredService<SymbolManager>();
             _logger = provider.GetRequiredService<ILogger<Initialize>>();
         }
 
         public async Task Run()
         {
-            var symbols = await _institutionManager.GetSymbolsAsync();
-
+            var symbols = await _symbolManager.GetSymbolsAsync();
+            var todayCutOffTime = await _symbolManager.GetTodaySchedule();
             foreach (var symbol in symbols.Where(s => s.ScanEnable && !s.Initialized))
             {
                 bool result;
 
                 _logger.LogInformation($"InsitutionHoldings Initialization For Symbol [{symbol.Ticker.ToUpper()}] Start ........ ");
                 result = await _initializeManager.InitializeInsitutionHoldings(symbol);
+                var failReason = new StringBuilder();
 
                 if (!result)
-                    _logger.LogError($"Fail To Intitalize Institution Holding for Symbol [{symbol.Ticker.ToUpper()}]");
+                {
+                    var reason = $"Fail To Intitalize Institution Holding for Symbol [{symbol.Ticker.ToUpper()}]";
+                    failReason.Append(reason);
+                    _logger.LogError(reason);
+
+                }
                 else
                     _logger.LogInformation($"InsitutionHoldings Initialization For Symbol [{symbol.Ticker.ToUpper()}] Succeed");
 
                 result = await _initializeManager.InitializeMarketPrices(symbol);
 
                 if (!result)
-                    _logger.LogError($"Fail To Intitalize MarketPrice for Symbol [{symbol.Ticker.ToUpper()}]");
+                { 
+                    var reason = $"Fail To Intitalize MarketPrice for Symbol [{symbol.Ticker.ToUpper()}]";
+                    failReason.Append(reason);
+                    _logger.LogError(reason);
+                }
+                    
                 else
                     _logger.LogInformation($"MarketPrice Initialization For Symbol [{symbol.Ticker.ToUpper()}] Succeed");
 
@@ -57,11 +68,25 @@ namespace Stock.Mining.Information.Setup
                 result =  await _initializeManager.InitializeInsiderTransaction(symbol);
 
                 if (!result)
-                    _logger.LogError($"Fail To Intitalize InsiderTransaction for Symbol [{symbol.Ticker.ToUpper()}]");
+                {
+                    var reason = $"Fail To Intitalize InsiderTransaction for Symbol [{symbol.Ticker.ToUpper()}]";
+                    failReason.Append(reason);
+                    _logger.LogError(reason);
+                }
+
                 else
                     _logger.LogInformation($"InsiderTransaction Initialization For Symbol [{symbol.Ticker.ToUpper()}] Succeed");
 
-                await _initializeManager.CompleteInitialization(symbol);
+                result = await _initializeManager.AddUpdateHistoryRecord(symbol, failReason.Length != 0 ? false : true, failReason.ToString(), todayCutOffTime);
+
+                if (!result)
+                {
+                    _logger.LogError($"Fail To add Update History for Symbol [{symbol.Ticker.ToUpper()}]");
+                }
+                else { 
+                    await _initializeManager.CompleteInitialization(symbol);
+                }
+                
             }
 
 

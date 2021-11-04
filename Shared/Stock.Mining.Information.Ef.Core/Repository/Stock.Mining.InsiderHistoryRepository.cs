@@ -45,8 +45,6 @@ namespace Stock.Mining.Information.Ef.Core.Repository
             {
                 return new List<InsiderHistory>();
             }
-
-            
         }
         
 
@@ -62,9 +60,6 @@ namespace Stock.Mining.Information.Ef.Core.Repository
                  _logger.LogError($"Batch insert insiderHistoryList failed {ex.InnerException}");
                 return false;
             }
-
-            
-            
         }
 
         public async Task<InsiderHistory> UpdateInsiderHistoryAsync(InsiderHistory insiderHistory)

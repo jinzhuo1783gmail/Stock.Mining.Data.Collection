@@ -20,13 +20,14 @@ namespace Stock.Mining.Information.Initialization.Manager
         private InstitutionManager _institutionManager;
         private MarketPriceManager _marketPriceManager;
         private InsiderTransactionManager _insiderTransactionManager;
-
-        public AppendManager(ILogger<AppendManager> logger, InstitutionManager institutionManager, MarketPriceManager marketPriceManager, InsiderTransactionManager insiderTransactionManager)
+        private SymbolManager _symbolManager;
+        public AppendManager(ILogger<AppendManager> logger, SymbolManager symbolManager, InstitutionManager institutionManager, MarketPriceManager marketPriceManager, InsiderTransactionManager insiderTransactionManager)
         { 
              _logger = logger;
             _institutionManager = institutionManager;
             _marketPriceManager = marketPriceManager;
             _insiderTransactionManager = insiderTransactionManager;
+            _symbolManager = symbolManager;
         }
 
         public async Task<bool> AppendInsitutionHoldingHistories(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol, DateTime? startDate = null, DateTime? endDate = null)
@@ -108,6 +109,12 @@ namespace Stock.Mining.Information.Initialization.Manager
 
             return true;
         
+        }
+
+
+        public async Task<bool> AddUpdateHistoryRecord(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol, bool isSuccess, string failReason, DateTime nextCutOffTime)
+        { 
+            return await _symbolManager.InsertUpdateHistoryAsync(symbol.Id, symbol.Ticker, isSuccess, failReason, nextCutOffTime);
         }
 
     }

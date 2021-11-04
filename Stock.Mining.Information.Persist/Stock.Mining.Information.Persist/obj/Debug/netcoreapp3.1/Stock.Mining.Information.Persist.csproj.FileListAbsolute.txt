@@ -23,7 +23,6 @@ C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\obj\Debug\netcoreapp3.1\staticwebassets\Stock.Mining.Information.Persist.StaticWebAssets.xml
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\obj\Debug\netcoreapp3.1\scopedcss\bundle\Stock.Mining.Information.Persist.styles.css
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Persist.RazorTargetAssemblyInfo.cache
-C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Persist.exe
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Persist.deps.json
@@ -74,3 +73,5 @@ C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\Serilog.Formatting.Compact.dll
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\Serilog.Sinks.Debug.dll
 C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\Serilog.Sinks.File.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\appsettings.Production.json
+C:\Zhuo\Code\StockInforExtraction\Stock.Mining.Information.Persist\Stock.Mining.Information.Persist\bin\Debug\netcoreapp3.1\appsettings.Developement.json

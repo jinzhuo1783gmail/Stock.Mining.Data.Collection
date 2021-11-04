@@ -10,12 +10,12 @@ C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Feature
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.deps.json
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.dll
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.pdb
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.dll
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.pdb
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.csprojAssemblyReference.cache
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.AssemblyInfoInputs.cache
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.AssemblyInfo.cs
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.csproj.CoreCompileInputs.cache
+C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.csproj.CopyComplete
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.dll
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.pdb
-C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.dll
-C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.pdb
-C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Symbol.Feature.Shared.Model\obj\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.csproj.CopyComplete

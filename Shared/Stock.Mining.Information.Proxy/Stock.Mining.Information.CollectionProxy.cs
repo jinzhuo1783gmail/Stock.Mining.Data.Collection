@@ -78,5 +78,25 @@ namespace Stock.Mining.Information.Proxy
         {
             return _restSharpUtil.GetList<InsiderHistory>(_host + _configuration.GetSection("ApiCollection:InsiderHistory:GetInsiderHistories").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("TickerName", ticker) });
         }
+
+        public async Task<IList<SymbolUpdateHistory>> GetUpdateHistories(string ticker)
+        {
+            return _restSharpUtil.GetList<SymbolUpdateHistory>(_host + _configuration.GetSection("ApiCollection:Symbol:GetUpdateHistories").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("TickerName", ticker) });
+        }
+
+        public async Task<DateTime> GetNextUpdateTime(string ticker)
+        {
+            return _restSharpUtil.GetSingle<DateTime>(_host + _configuration.GetSection("ApiCollection:Symbol:GetNestUpdateTime").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("TickerName", ticker) });
+        }
+
+        public async Task<bool> InsertUpdateHistories(IList<SymbolUpdateHistory> symbolUpdateHistories)
+        {
+            return _restSharpUtil.PostReturnNoResult<SymbolUpdateHistory, bool>(_host + _configuration.GetSection("ApiCollection:Symbol:InsertUpdateHistory").Value, symbolUpdateHistories);
+        }
+
+        public async Task<bool> UpdateUpdateHistories(IList<SymbolUpdateHistory> symbolUpdateHistories)
+        {
+            return _restSharpUtil.PostReturnNoResult<SymbolUpdateHistory, bool>(_host + _configuration.GetSection("ApiCollection:Symbol:UpdateUpdateHistory").Value, symbolUpdateHistories);
+        }
     }
 }

@@ -22,8 +22,12 @@ namespace Stock.Mining.Information.Setup
         {
 
 
-            var isAppend = false;
+            var isAppend = true;
             var isProd = false;
+
+            if (args.Contains("--init")) isAppend = false;
+            if (args.Contains("--prod")) isProd = true;
+
 
             if (args.Contains("--prod")) isProd = true;
             if (args.Contains("--init")) isAppend = false;
@@ -36,12 +40,16 @@ namespace Stock.Mining.Information.Setup
             var builderRoot = builder.Build();
 
 
-            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(builderRoot)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .WriteTo.File(@"\\192.168.1.108\public\log\Stock.Mining.Information.Setup.Log-.txt", rollingInterval: RollingInterval.Day) 
+            Log.Logger = new LoggerConfiguration()
+                        .ReadFrom.Configuration(builderRoot)
+                        .CreateLogger();
+
+            //Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(builderRoot)
+            //    .Enrich.FromLogContext()
+            //    .WriteTo.Console()
+            //    .WriteTo.File(@"\\192.168.1.108\public\log\Stock.Mining.Information.Setup.Log-.txt", rollingInterval: RollingInterval.Day) 
                 
-                .CreateLogger();
+            //    .CreateLogger();
 
             
 
@@ -62,11 +70,12 @@ namespace Stock.Mining.Information.Setup
                     services.AddTransient<InstitutionManager>();
                     services.AddTransient<MarketPriceManager>();
                     services.AddTransient<InsiderTransactionManager>();
-                    
+                    services.AddTransient<SymbolManager>();
 
                     services.AddTransient<InitializeManager>();
                     services.AddTransient<AppendManager>();
                     services.AddSingleton<IRestClient, RestClient>();
+                    
                     
                 })
                 .UseSerilog()
@@ -84,9 +93,6 @@ namespace Stock.Mining.Information.Setup
                 init.Run();
             }
 
-            
-
-
         }
 
         public static void BuildConfig(IConfigurationBuilder builder, bool isProd  = false)
@@ -95,7 +101,7 @@ namespace Stock.Mining.Information.Setup
                 .AddJsonFile("appsettings.josn", optional: true, reloadOnChange: true);
             
             if (isProd) 
-                builder.AddJsonFile("appsettings.prod.josn", optional: true, reloadOnChange: true);
+                builder.AddJsonFile("appsettings.Production.josn", optional: true, reloadOnChange: true);
 
             builder.AddEnvironmentVariables().Build();
         }

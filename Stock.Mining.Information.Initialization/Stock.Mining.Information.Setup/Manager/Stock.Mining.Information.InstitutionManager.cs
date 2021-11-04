@@ -30,15 +30,7 @@ namespace Stock.Mining.Information.Initialization.Manager
             _loadProxy = loadProxy;
         }
 
-        public async Task<IList<Stock.Mining.Information.Ef.Core.Entity.Symbol>> GetSymbolsAsync()
-        { 
-            return await _collectionProxy.GetSymbols();
-        }
 
-        public async Task<Stock.Mining.Information.Ef.Core.Entity.Symbol> UpdateSymbolAsync(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
-        { 
-            return await _collectionProxy.UpdateSymbol(symbol);
-        }
 
         public async Task<IList<InstitutionOwner>> GetInstitutionOwnersAsync(string ticker)
         { 

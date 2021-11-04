@@ -63,9 +63,6 @@ namespace Stock.Mining.Information.Ef.Core.Repository
                  _logger.LogError($"Batch insert price failed {ex.InnerException}");
                 return false;
             }
-
-            
-            
         }
 
         public async Task<SymbolPrice> UpdatePriceAsync(SymbolPrice symbolPrice)

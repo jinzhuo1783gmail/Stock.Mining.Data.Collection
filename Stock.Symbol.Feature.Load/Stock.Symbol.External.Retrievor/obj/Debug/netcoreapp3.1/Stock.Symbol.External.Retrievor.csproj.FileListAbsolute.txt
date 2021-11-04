@@ -1,8 +1,12 @@
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.deps.json
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.dll
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.dll
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.dll
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.dll
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.EF.Core.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.pdb
+C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.pdb
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\obj\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.csprojAssemblyReference.cache
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\obj\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.AssemblyInfoInputs.cache
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\obj\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.AssemblyInfo.cs
@@ -10,7 +14,3 @@ C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.Externa
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\obj\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.csproj.CopyComplete
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\obj\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.dll
 C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\obj\Debug\netcoreapp3.1\Stock.Symbol.External.Retrievor.pdb
-C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.dll
-C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.dll
-C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.pdb
-C:\Zhuo\Code\StockInforExtraction\Stock.Symbol.Feature.Load\Stock.Symbol.External.Retrievor\bin\Debug\netcoreapp3.1\Stock.Symbol.Feature.Shared.Model.pdb

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Stock.Symbol.Feature.Load.ConfigModel;
 
 namespace Stock.Symbol.Feature.Load.Manager
 {
@@ -18,11 +19,19 @@ namespace Stock.Symbol.Feature.Load.Manager
         private ILogger<AlphaVantageApiRetrievor> _logger;
         private IConfiguration _configuration;
         private AlphaVantageRepository _alphaVantageRepository;
-        public DailyPriceManager(AlphaVantageApiRetrievor alphaVantageApiRetrievor, HtmlTableRetrievor htmlTableRetrievor, ILogger<AlphaVantageApiRetrievor> logger, IConfiguration configuration, AlphaVantageRepository alphaVantageRepository)
+        private static ApiEndpointList _apiEndpointList;
+
+        public DailyPriceManager(   AlphaVantageApiRetrievor alphaVantageApiRetrievor, 
+                                    HtmlTableRetrievor htmlTableRetrievor, 
+                                    ILogger<AlphaVantageApiRetrievor> logger, 
+                                    IConfiguration configuration, 
+                                    AlphaVantageRepository alphaVantageRepository, 
+                                    ApiEndpointList apiEndpointList)
         {
             _alphaVantageApiRetrievor = alphaVantageApiRetrievor;
             _logger = logger;
             _configuration = configuration;
+            _apiEndpointList = apiEndpointList;
             _alphaVantageRepository = alphaVantageRepository;
         }
 
@@ -33,7 +42,7 @@ namespace Stock.Symbol.Feature.Load.Manager
             { 
                 var accessKey = _alphaVantageRepository.Get().FirstOrDefault();
 
-                var url = _configuration["ApiEndpointList:ApiAlphaVantageHistoricalPrice"];
+                var url = _apiEndpointList.ApiAlphaVantageHistoricalPrice;
                 if (string.IsNullOrEmpty(url))
                 {
                     _logger.LogError($"No Api configured for ApiRapidYahooInstitutionalHolders");

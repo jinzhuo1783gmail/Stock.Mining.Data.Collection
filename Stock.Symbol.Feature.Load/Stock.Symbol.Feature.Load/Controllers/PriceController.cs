@@ -32,7 +32,7 @@ namespace Stock.Symbol.Feature.Load.Controllers
         {
 
             startDate = startDate == default(DateTime) ? DateTime.MinValue :  startDate.Date;
-            endDate = endDate.Date == DateTime.MaxValue.Date ? DateTime.MaxValue :  endDate.Date.AddDays(1).AddSeconds(-1);
+            endDate = endDate == default(DateTime)  ? DateTime.MaxValue :  endDate.Date.AddDays(1).AddSeconds(-1);
 
             if (startDate > endDate)
             {
@@ -44,6 +44,7 @@ namespace Stock.Symbol.Feature.Load.Controllers
 
             if (prices == null || !prices.Any())
             {
+                _logger.LogError("no price return from alpha api");
                 return StatusCode(500);
             }
 

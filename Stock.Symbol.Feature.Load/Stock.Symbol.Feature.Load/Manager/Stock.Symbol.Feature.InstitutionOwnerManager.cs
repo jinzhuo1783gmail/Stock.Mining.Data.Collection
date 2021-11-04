@@ -8,22 +8,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Stock.Symbol.Feature.Load.ConfigModel;
 
 namespace Stock.Symbol.Feature.Load.Manager
 {
     public class InstitutionOwnerManager
     {
         private readonly RapidApiRetrievor _rapidApiRetrievor;
-        ILogger<InstitutionOwnerManager> _logger;
-        IConfiguration _configuration;
-        HtmlTableRetrievor _htmlTableRetrievor;
-
-        public InstitutionOwnerManager(RapidApiRetrievor rapidApiRetrievor, HtmlTableRetrievor htmlTableRetrievor, ILogger<InstitutionOwnerManager> logger, IConfiguration configuration)
+        private ILogger<InstitutionOwnerManager> _logger;
+        private IConfiguration _configuration;
+        private HtmlTableRetrievor _htmlTableRetrievor;
+        private ApiEndpointList _apiEndpointList;
+        private HtmlTableExtract _htmlTableExtract;
+        public InstitutionOwnerManager( RapidApiRetrievor rapidApiRetrievor, 
+                                        HtmlTableRetrievor htmlTableRetrievor, 
+                                        ILogger<InstitutionOwnerManager> logger, 
+                                        IConfiguration configuration,
+                                        ApiEndpointList apiEndpointList,
+                                        HtmlTableExtract htmlTableExtract
+                                        )
         {
             _rapidApiRetrievor = rapidApiRetrievor;
             _logger = logger;
             _configuration = configuration;
             _htmlTableRetrievor = htmlTableRetrievor;
+            _apiEndpointList = apiEndpointList;
+            _htmlTableExtract = htmlTableExtract;
         }
 
 
@@ -76,7 +86,7 @@ namespace Stock.Symbol.Feature.Load.Manager
         public async Task<IList<InstitutionOwner>> GetInstitutionOwnersFromRapidAsync(string symbol)
         {
 
-            var url = _configuration["ApiEndpointList:ApiRapidYahooInstitutionalHolders"];
+            var url = _apiEndpointList.ApiRapidYahooInstitutionalHolders;
             if (string.IsNullOrEmpty(url))
             { 
                 _logger.LogError($"No Api configured for ApiRapidYahooInstitutionalHolders");
@@ -134,7 +144,7 @@ namespace Stock.Symbol.Feature.Load.Manager
 
         public async Task<IList<InstitutionTransaction>> GetInstitutionOwnersTransactionFromHTMLFintelAsync(string symbol)
         {
-            var host = _configuration["ApiEndpointList:ApiHTMLExtract"];
+            var host = _apiEndpointList.ApiHTMLExtract;
             if (string.IsNullOrEmpty(host))
             { 
                 _logger.LogError($"No Api configured for HTMLExtract");
@@ -142,7 +152,7 @@ namespace Stock.Symbol.Feature.Load.Manager
             }
 
 
-            var url = _configuration["ApiEndpointList:ApiHtmlHoldingsFintel"];
+            var url = _apiEndpointList.ApiHtmlHoldingsFintel;
             if (string.IsNullOrEmpty(url))
             { 
                 _logger.LogError($"No Api configured for ApiHtmlHoldingsFintel");
@@ -167,7 +177,7 @@ namespace Stock.Symbol.Feature.Load.Manager
             jObjectbody.Add("url", url);
 
             var isSummary = await _htmlTableRetrievor.RetrieveAsync<JObject, JObject>(jObjectbody);
-            var tableName = _configuration["HtmlTableExtract:Fintel:InstitutionHolding"];
+            var tableName = _htmlTableExtract.Fintel.InstitutionHolding;
 
 
             var isOwnerShipTransaction = isSummary[tableName] as JArray;
@@ -201,7 +211,7 @@ namespace Stock.Symbol.Feature.Load.Manager
         public async Task<IList<InstitutionOwner>> GetInstitutionOwnersFromHoldingsChannelAsync(string symbol)
         {
 
-            var host = _configuration["ApiEndpointList:ApiHTMLExtract"];
+            var host = _apiEndpointList.ApiHTMLExtract;
             if (string.IsNullOrEmpty(host))
             { 
                 _logger.LogError($"No Api configured for HTMLExtract");
@@ -209,7 +219,7 @@ namespace Stock.Symbol.Feature.Load.Manager
             }
 
 
-            var url = _configuration["ApiEndpointList:ApiHtmlHoldingsHoldingsChannel"];
+            var url = _apiEndpointList.ApiHtmlHoldingsHoldingsChannel;
             if (string.IsNullOrEmpty(url))
             { 
                 _logger.LogError($"No Api configured for ApiHtmlHoldingsHoldingsChannel");
@@ -240,7 +250,7 @@ namespace Stock.Symbol.Feature.Load.Manager
 
             var isSummary = await _htmlTableRetrievor.RetrieveAsync<JObject, JObject>(jObjectbody);
             var exclusiveList = new List<string>() { "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Put", "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Call",  $"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{symbol}"};
-            var tableName = _configuration["HtmlTableExtract:HoldingsChannel:InstitutionHolding"];
+            var tableName = _htmlTableExtract.HoldingsChannel.InstitutionHolding;
 
             if (isSummary != null)
             { 

@@ -4,6 +4,7 @@ using Stock.Mining.Information.Ef.Core.Entity;
 using Stock.Symbol.Feature.Shared.Model;
 using Stock.Symbol.Feature.Shared.Model.Util;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,12 @@ namespace Stock.Mining.Information.Proxy
             return _restSharpUtil.GetList<InsiderTransaction>(_host + _configuration.GetSection("ApiLoad:Rapid:InsiderTransaction").Value, new List<KeyValuePair<string, string>>() { new KeyValuePair<string, string>("symbol", ticker) });
         }
 
+        public async Task<DateTime> GetUpdateScheduleAsync()
+        {
+            var updateList = _restSharpUtil.GetList<DateTime>(_host + _configuration.GetSection("ApiLoad:Schedule:UpdateSchedule").Value);
+
+            return updateList.FirstOrDefault();
+        }
 
         public async Task<IList<StockPriceViewModel>> GetMarketPriceAsync(string ticker, DateTime startDate, DateTime endDate)
         {

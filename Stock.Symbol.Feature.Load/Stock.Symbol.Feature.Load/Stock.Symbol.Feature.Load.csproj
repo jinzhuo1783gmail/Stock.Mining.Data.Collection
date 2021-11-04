@@ -5,6 +5,10 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>\\192.168.1.108\Shared\Application\StockAnalysis\Stock.Symbol.Feature.Load</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.15" />
@@ -23,6 +27,12 @@
     <ProjectReference Include="..\..\Shared\Stock.Symbol.Feature.Shared.Model\Stock.Symbol.Feature.Shared.Model.csproj" />
     <ProjectReference Include="..\Stock.Symbol.External.Retrievor\Stock.Symbol.External.Retrievor.csproj" />
     <ProjectReference Include="..\Stock.Symbol.Feature.EF.Core\Stock.Symbol.Feature.EF.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Dockerfile">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 

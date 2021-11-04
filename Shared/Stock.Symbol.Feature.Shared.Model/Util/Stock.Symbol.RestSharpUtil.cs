@@ -23,6 +23,7 @@ namespace Stock.Symbol.Feature.Shared.Model.Util
             _restClient = restClient;
         }
 
+
         public IList<TO> GetList<TO>(string url, List<KeyValuePair<string, string>> param = null)
         {
             try
@@ -60,6 +61,46 @@ namespace Stock.Symbol.Feature.Shared.Model.Util
             { 
                 _logger.LogError($"Api Fail url {url} message {ex.Message}");
                 return default(IList<TO>);
+            }
+        }
+
+        public TO GetSingle<TO>(string url, List<KeyValuePair<string, string>> param = null)
+        {
+            try
+            {
+                _restClient.BaseUrl = new Uri(url);
+
+                var request = new RestRequest();
+
+                if (param != null)
+                {
+                    param.ForEach(p => request.AddParameter(p.Key.ToString(), p.Value.ToString()));
+                }
+
+                request.Method = Method.GET;
+
+                IRestResponse response = _restClient.Execute(request);
+
+                if (response.IsSuccessful)
+                {
+                    var returnObj = JsonConvert.DeserializeObject<TO>(response.Content);
+
+                    if (returnObj == null)
+                        _logger.LogError($"StatusCode: {response.StatusCode} [{url}] Response: {response.Content.ToString()}");
+
+                    return returnObj;
+                }
+                    
+                else
+                {
+                    _logger.LogError($"StatusCode: {response.StatusCode} [{url}] Response: {response.ErrorMessage}");
+                    return default(TO);
+                }
+            }
+            catch (Exception ex)
+            { 
+                _logger.LogError($"Api Fail url {url} message {ex.Message}");
+                return default(TO);
             }
         }
 

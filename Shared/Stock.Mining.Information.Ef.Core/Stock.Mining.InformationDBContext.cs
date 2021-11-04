@@ -14,6 +14,8 @@ namespace Stock.Mining.Information.Ef.Core
 
         public DbSet<InsiderHistory> InsiderHistories { get; set; }
 
+        public DbSet<SymbolUpdateHistory> SymbolUpdateHistories { get; set; }
+
         public InformationDBContext(DbContextOptions<InformationDBContext> Option) : base(Option)
         {
 

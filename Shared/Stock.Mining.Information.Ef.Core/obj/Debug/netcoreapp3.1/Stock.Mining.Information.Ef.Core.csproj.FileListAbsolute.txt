@@ -6,4 +6,3 @@ C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Ef.Core\obj\De
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Ef.Core\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.csproj.CoreCompileInputs.cache
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Ef.Core\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.dll
 C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Ef.Core\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.pdb
-C:\Zhuo\Code\StockInforExtraction\Shared\Stock.Mining.Information.Ef.Core\obj\Debug\netcoreapp3.1\Stock.Mining.Information.Ef.Core.csprojAssemblyReference.cache

@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Stock.Symbol.Feature.Load.ConfigModel;
 
 namespace Stock.Symbol.Feature.Load.Manager
 {
@@ -18,12 +19,13 @@ namespace Stock.Symbol.Feature.Load.Manager
         private readonly RapidApiRetrievor _rapidApiRetrievor;
         ILogger<InsiderTransactionManager> _logger;
         IConfiguration _configuration;
-
-        public InsiderTransactionManager(RapidApiRetrievor rapidApiRetrievor, ILogger<InsiderTransactionManager> logger, IConfiguration configuration)
+        ApiEndpointList _apiEndpointList;
+        public InsiderTransactionManager(RapidApiRetrievor rapidApiRetrievor, ILogger<InsiderTransactionManager> logger, IConfiguration configuration, ApiEndpointList apiEndpointList)
         {
             _rapidApiRetrievor = rapidApiRetrievor;
             _logger = logger;
             _configuration = configuration;
+            _apiEndpointList = apiEndpointList;
         }
 
         public async Task<IList<InsiderTransaction>> GetInsiderTransaction(string symbol)
@@ -32,7 +34,7 @@ namespace Stock.Symbol.Feature.Load.Manager
 
             try
             {
-                var url = _configuration["ApiEndpointList:ApiRapidYahooInsiderTransaction"];
+                var url = _apiEndpointList.ApiRapidYahooInsiderTransaction;
                 if (string.IsNullOrEmpty(url))
                 {
                     _logger.LogError($"No Api configured for ApiRapidYahooInsiderTransaction");

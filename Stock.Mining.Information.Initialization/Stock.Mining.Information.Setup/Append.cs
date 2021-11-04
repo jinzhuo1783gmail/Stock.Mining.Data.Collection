@@ -14,7 +14,9 @@ namespace Stock.Mining.Information.Initialization
         private AppendManager _appendManager;
         private InitializeManager _initializeManager;
         private InstitutionManager _institutionManager;
+         private SymbolManager _symbolManager;
         private ILogger<Append> _logger;
+        
         public Append(IServiceProvider services)
         {
             IServiceScope serviceScope = services.CreateScope();
@@ -23,16 +25,25 @@ namespace Stock.Mining.Information.Initialization
             _appendManager = provider.GetRequiredService<AppendManager>();
             _initializeManager = provider.GetRequiredService<InitializeManager>();
             _institutionManager = provider.GetRequiredService<InstitutionManager>();
+            _symbolManager = provider.GetRequiredService<SymbolManager>();
             _logger = provider.GetRequiredService<ILogger<Append>>();
         }
 
         public async Task Run()
         {
-            var symbols = await _institutionManager.GetSymbolsAsync();
+            var symbols = await _symbolManager.GetSymbolsAsync();
 
             foreach (var symbol in symbols.Where(s => s.ScanEnable && s.Initialized))
             {
                 var result = true;
+                var todayCutOffTime = await _symbolManager.GetTodaySchedule();
+                var nextRunTime = await _symbolManager.GetNextUpdateTimeBySymbolAsync(symbol);
+
+                // not time yet ,just skip
+                if (DateTime.Now <= nextRunTime) continue;
+                    
+                
+                var failReason = new StringBuilder();
 
                 _logger.LogInformation($"InsitutionHoldings Appending For Symbol [{symbol.Ticker.ToUpper()}] Start ........ ");
 
@@ -46,10 +57,14 @@ namespace Stock.Mining.Information.Initialization
                     result =  await _appendManager.AppendInsitutionHoldingHistories(symbol);
                 }
                 
-                 if (!result)
-                        _logger.LogError($"Fail To Append Institution Holding for Symbol [{symbol.Ticker.ToUpper()}]");
-                    else
-                        _logger.LogInformation($"InsitutionHoldings Appending For Symbol [{symbol.Ticker.ToUpper()}] Successful ");
+                if (!result)
+                {
+                    var reason = $"Fail To Append Institution Holding for Symbol [{symbol.Ticker.ToUpper()}]";
+                    failReason.Append(reason);
+                    _logger.LogError(reason);
+                }
+                else
+                    _logger.LogInformation($"InsitutionHoldings Appending For Symbol [{symbol.Ticker.ToUpper()}] Successful ");
 
                 
                 _logger.LogInformation($"Market Price Appending For Symbol [{symbol.Ticker.ToUpper()}]  Start ........  ");
@@ -69,7 +84,12 @@ namespace Stock.Mining.Information.Initialization
                 
 
                 if (!result)
-                    _logger.LogError($"Fail To Append MarketPrice Holding for Symbol [{symbol.Ticker.ToUpper()}]");
+                {
+                    var reason = $"Fail To Append MarketPrice Holding for Symbol [{symbol.Ticker.ToUpper()}]";
+                    failReason.Append(reason);
+                    _logger.LogError(reason);
+
+                }
                 else
                     _logger.LogInformation($"MarketPrice Appending For Symbol [{symbol.Ticker.ToUpper()}] Successful ");
 
@@ -90,10 +110,23 @@ namespace Stock.Mining.Information.Initialization
                 
 
                 if (!result)
-                    _logger.LogError($"Fail To Append insider transaction for Symbol [{symbol.Ticker.ToUpper()}]");
+                {
+                    var reason = $"Fail To Append insider transaction for Symbol [{symbol.Ticker.ToUpper()}]";
+                    failReason.Append(reason);
+                    _logger.LogError(reason);
+                }
                 else
                     _logger.LogInformation($"insider transaction Appending For Symbol [{symbol.Ticker.ToUpper()}] Successful ");
+            
+                result = await _appendManager.AddUpdateHistoryRecord(symbol, failReason.Length != 0 ? false : true, failReason.ToString(), todayCutOffTime);
+
+                if (!result)
+                {
+                    _logger.LogError($"Fail To add Update History for Symbol [{symbol.Ticker.ToUpper()}]");
+                }
+                
             }
+
 
 
         }

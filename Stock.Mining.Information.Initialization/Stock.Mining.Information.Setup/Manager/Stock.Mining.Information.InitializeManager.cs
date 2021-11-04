@@ -17,15 +17,17 @@ namespace Stock.Mining.Information.Initialization.Manager
     {
 
         private ILogger<InitializeManager> _logger;
+        private SymbolManager _symbolManager;
         private InstitutionManager _institutionManager;
         private MarketPriceManager _marketPriceManager;
         private InsiderTransactionManager _insiderTransactionManager;
-        public InitializeManager(ILogger<InitializeManager> logger, InstitutionManager institutionManager, MarketPriceManager marketPriceManager, InsiderTransactionManager insiderTransactionManager)
+        public InitializeManager(ILogger<InitializeManager> logger, InstitutionManager institutionManager, MarketPriceManager marketPriceManager, InsiderTransactionManager insiderTransactionManager, SymbolManager symbolManager)
         { 
              _logger = logger;
             _institutionManager = institutionManager;
             _marketPriceManager = marketPriceManager;
             _insiderTransactionManager = insiderTransactionManager;
+            _symbolManager = symbolManager;
         }
 
         public async Task<bool> AnyInsitutionHoldings(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
@@ -59,11 +61,7 @@ namespace Stock.Mining.Information.Initialization.Manager
                 return false;
             }
 
-           
-
             return true;
-
-
 
         }
 
@@ -115,16 +113,25 @@ namespace Stock.Mining.Information.Initialization.Manager
             return true;
         }
 
+        public async Task<bool> AddUpdateHistoryRecord(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol, bool isSuccess, string failReason, DateTime nextCutOffTime)
+        { 
+            return await _symbolManager.InsertUpdateHistoryAsync(symbol.Id, symbol.Ticker, isSuccess, failReason, nextCutOffTime);
+        }
+
+
         public async Task<bool> CompleteInitialization(Stock.Mining.Information.Ef.Core.Entity.Symbol symbol)
         { 
              symbol.Initialized = true;
 
-            var finalizedSymbol = await _institutionManager.UpdateSymbolAsync(symbol);
+            var finalizedSymbol = await _symbolManager.UpdateSymbolAsync(symbol);
             if (finalizedSymbol == default(Stock.Mining.Information.Ef.Core.Entity.Symbol))
             { 
                 _logger.LogError($"failed to finalize symbol [{symbol.Ticker}]");
                 return false;
             }
+
+            
+
 
             return true;
         }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Stock.Symbol.Feature.EF.Core;
 using Stock.Symbol.Feature.Load.Manager;
 using System;
@@ -15,10 +16,11 @@ namespace Stock.Symbol.Feature.Load.Controllers
     {
 
         private readonly RapidApiManager _rapidApiManager;
-
-        public AccessKeyController(RapidApiManager rapidApiManager)
+        private ILogger<AccessKeyController> _logger;
+        public AccessKeyController(RapidApiManager rapidApiManager, ILogger<AccessKeyController> logger)
         {
             _rapidApiManager = rapidApiManager;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -29,6 +31,7 @@ namespace Stock.Symbol.Feature.Load.Controllers
 
             if (keys == null)
             {
+                _logger.LogError("No key returned from db");
                 return StatusCode(500);
             }
 

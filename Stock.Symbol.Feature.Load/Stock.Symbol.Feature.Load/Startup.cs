@@ -18,6 +18,8 @@ using Stock.Symbol.External.Retrievor.Manager;
 using Stock.Symbol.External.Retrievor;
 using Stock.Symbol.Feature.Load.Mapper;
 using Serilog;
+using Stock.Symbol.Feature.Load.ConfigModel;
+using System.IO;
 
 namespace Stock.Symbol.Feature.Load
 {
@@ -25,7 +27,20 @@ namespace Stock.Symbol.Feature.Load
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+
+            var env = configuration.GetSection("Env");
+            
+            
+            var builder = new ConfigurationBuilder();
+            builder.SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            
+           builder.AddJsonFile($"appsettings.{env}.json", optional: true, reloadOnChange: true);
+
+            builder.AddEnvironmentVariables();
+
+            Configuration = builder.Build();
+
         }
 
         public IConfiguration Configuration { get; }
@@ -51,17 +66,28 @@ namespace Stock.Symbol.Feature.Load
                 .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             
             services.AddDbContext<RSDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DbString"), optBuilder => optBuilder.MigrationsAssembly("Stock.Symbol.Feature.Load")));
-            
+
+            var apiEndpointList = new ApiEndpointList();
+            Configuration.GetSection("ApiEndpointList").Bind(apiEndpointList);
+
+            services.AddSingleton<ApiEndpointList>(_ => apiEndpointList);
+
+            var htmlTableExtract = new HtmlTableExtract();
+            Configuration.GetSection("HtmlTableExtract").Bind(htmlTableExtract);
+            services.AddSingleton<HtmlTableExtract>(_ => htmlTableExtract);
 
             services.AddTransient<RestSharpRepository>();
             services.AddTransient<AlphaVantageRepository>();
+            services.AddTransient<UpdateScheduleRepository>();
 
+            
             services.AddTransient<RapidApiManager>();
             services.AddTransient<RapidApiTokenManager>();
             services.AddTransient<InstitutionOwnerManager>();
             services.AddTransient<DailyPriceManager>();
             services.AddTransient<InsiderTransactionManager>();
-
+            services.AddTransient<UpdateScheduleManager>();
+            
 
             services.AddTransient<RapidApiRetrievor>();
             services.AddTransient<HtmlTableRetrievor>();
@@ -72,9 +98,6 @@ namespace Stock.Symbol.Feature.Load
                         .CreateLogger();
 
             Log.Logger.Information("Stock Symbol Feature Load Service Start ........ ");
-
-            
-
 
             services.AddControllers();
         }

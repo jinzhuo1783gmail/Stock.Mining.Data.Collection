@@ -10,7 +10,8 @@ namespace Stock.Symbol.Feature.EF.Core
     {
         public DbSet<RestSharpAccessKey> RestSharpAccessKeys { get; set; }
         public DbSet<AlphaVantageAccessKey> AlphaVantageAccessKeys { get; set; }
-        
+        public DbSet<UpdateSchedule> UpdateSchedule { get; set; }
+
         public RSDBContext(DbContextOptions<RSDBContext> Option) : base(Option)
         {
 
